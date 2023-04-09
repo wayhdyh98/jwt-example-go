@@ -4,17 +4,19 @@ import (
 	"fmt"
 	"go-jwt/models"
 	"log"
+	"os"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
+// mengambil data dari env variable di deployment Raillway App
 var (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "w4hYu98"
-	dbname   = "simple-api"
+	host     = os.Getenv("PGHOST")
+	port     = os.Getenv("PGPORT")
+	user     = os.Getenv("PGUSER")
+	password = os.Getenv("PGPASSWORD")
+	dbname   = os.Getenv("PGDATABASE")
 	db       *gorm.DB
 	err      error
 )
